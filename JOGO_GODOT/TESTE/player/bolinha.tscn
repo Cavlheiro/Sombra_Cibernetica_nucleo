@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://TESTE/player/camera.gd" type="Script" id=1]
+[ext_resource path="res://TESTE/player/bolinha.gd" type="Script" id=2]
+[ext_resource path="res://TexturaGodot.tres" type="Material" id=3]
+
+[sub_resource type="SphereShape" id=2]
+
+[node name="bolinha" type="KinematicBody" groups=["player"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55544, -9.96353 )
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0 )
+shape = SubResource( 2 )
+
+[node name="CSGSphere" type="CSGSphere" parent="."]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0 )
+material = ExtResource( 3 )
+
+[node name="camera" type="Spatial" parent="."]
+script = ExtResource( 1 )
+
+[node name="camera" type="Camera" parent="camera"]
+transform = Transform( 1, 0, 0, 0, 0.928596, 0.371092, 0, -0.371092, 0.928596, 0, 1.48677, 2.0357 )
+
+[node name="RayCast" type="RayCast" parent="camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.76837e-07, 0 )
+enabled = true
+cast_to = Vector3( 0, 1, 3 )
